@@ -1,27 +1,20 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../database/db'); // Adjust this import according to your project structure
+const { DataTypes, INTEGER } = require('sequelize');
+const sequelize = require('../database/db');
 
 const Restaurant = sequelize.define('Restaurant', {
+    // Define your model attributes here
     restaurantName: {
         type: DataTypes.STRING,
-        allowNull: false,
-        field: 'restaurant_name'
+        allowNull: false
     },
     restaurantEmail: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
-        validate: {
-            isEmail: true
-        },
-        field: 'restaurant_email'
+        unique: true
     },
     phone: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            isNumeric: true
-        }
+        allowNull: false
     },
     address: {
         type: DataTypes.STRING,
@@ -40,17 +33,20 @@ const Restaurant = sequelize.define('Restaurant', {
         allowNull: false
     },
     foods: {
-        type: DataTypes.ARRAY(DataTypes.STRING), // Changed to ARRAY to match data input
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
     },
     location: {
-        type: DataTypes.JSON,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
     },
     popularDishes: {
-        type: DataTypes.ARRAY(DataTypes.JSON), // Changed to JSON to include both name and photo
-        allowNull: false,
-        field: 'popular_dishes'
+        type: DataTypes.ARRAY(DataTypes.JSON),
+        allowNull: false
+    },
+    seatingDetails: {
+        type: DataTypes.ARRAY(DataTypes.JSON),
+        allowNull: false
     },
     photos: {
         type: DataTypes.ARRAY(DataTypes.STRING),
@@ -62,34 +58,22 @@ const Restaurant = sequelize.define('Restaurant', {
     },
     menuPhotos: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
-        field: 'menu_photos'
+        allowNull: false
     },
-    seatingDetails: {
-        type: DataTypes.ARRAY(DataTypes.JSON), // Changed to JSON to store multiple seating types and options
-        allowNull: false,
-        field: 'seating_details'
+    dishesphotos: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true
     },
-    approved: {
-        type: DataTypes.BOOLEAN,
+    approved:{
+        type: Boolean,
         defaultValue: false
     },
-    createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-        field: 'created_at'
-    },
-    updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-        field: 'updated_at'
+    rating:{
+        type:INTEGER,
+        defaultValue: 0
     }
-}, {
-    tableName: 'restaurants',
-    timestamps: true,
-    underscored: true // This ensures that the timestamps are in snake_case
 });
 
-module.exports = Restaurant;
+module.exports = {
+    Restaurant
+};

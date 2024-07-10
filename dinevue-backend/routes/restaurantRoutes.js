@@ -9,6 +9,9 @@ router.post('/createRestaurant', restaurantController.createRestaurant);
 router.get('/getAllRestaurants', restaurantController.getAllRestaurants);
 
 // GET route to fetch a single restaurant by ID
-router.get('/restaurants/:id', restaurantController.getSingleRestaurant);
+router.get('/restaurant/:id', restaurantController.getSingleRestaurant);
+
+
+router.post('/loginRestaurant', restaurantController.loginRestaurant);
 
 module.exports = router;
