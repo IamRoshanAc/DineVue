@@ -1,0 +1,81 @@
+.ratings {
+    font-family: 'Outfit', sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+  }
+  
+  .ratings h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .overall-rating {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .category-ratings {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .category-ratings div {
+    text-align: center;
+  }
+  
+  .category-ratings h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .stars {
+    color: #FF7410;
+  }
+  .number{
+    font-size: 1.5rem;
+  }
+  .stars a{
+    color: #000;
+  }
+  
+  .review {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .name {
+    font-weight: bold;
+  }
+  
+  .review-ratings {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .review-ratings span {
+    font-size: 0.9rem;
+    color: gray;
+  }
+  
+  .show-all {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  

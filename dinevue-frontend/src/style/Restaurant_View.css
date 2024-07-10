@@ -1,0 +1,327 @@
+body {
+  font-family: 'Outfit', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+}
+
+.header-image {
+  width: 100%;
+  height: 500px;
+}
+
+.save-button {
+  position: absolute;
+  display: flex;
+  align-items: center; /* Center the text and icon */
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 3%;
+  z-index: 10; /* Ensure it stays on top */
+  margin-right: 20px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for color changes */
+}
+
+.save-button:hover {
+  background-color: #f0f0f0; /* Slightly darker background on hover */
+}
+
+.save-icon {
+  color: rgb(228, 228, 228); /* Default color */
+  transition: color 0.3s; /* Smooth transition for color changes */
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.save-icon.saved {
+  color: #2b3145; /* Color when saved */
+}
+
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+}
+
+.restaurant-info {
+  flex: 2;
+  background-color: white;
+  margin-top: -80px;
+  z-index: 0;
+  padding: 0px 20px 20px 35px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sticky navbar and reservation */
+.sticky-nav-reservation {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0px 4px 2px -2px gray;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: darkgray;
+  padding: 10px 20px;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+.nav-bar a:hover,
+.nav-bar a:focus {
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+.nav-bar a.active {
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+.restaurant-info h1 {
+  margin-bottom: 10px;
+  font-size: 400%;
+  font-weight: 500;
+  padding: 10px 10px 10px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+span a {
+  color: #2b3145;
+}
+
+span .star-rating {
+  height: fit-content;
+  color: #2b3145;
+}
+
+.reviews {
+  color: #2b3145;
+  font-weight: 500;
+  display: flex;
+  margin-left: 10px;
+}
+
+.category {
+  color: #2b3145;
+  font-weight: 500;
+  display: flex;
+  margin-left: 10px;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.view_tag {
+  background-color: #2b3145;
+  color: #f7f7f7;
+  padding: 5px 10px;
+  border-radius: 105px;
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 200%;
+  font-weight: 500;
+  padding: 10px 10px 10px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dishes {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 2%;
+  margin-bottom: 4%;
+}
+
+.dish {
+  width: 30%;
+  padding: 1%;
+  display: flex;
+  text-align: center;
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.dish:hover {
+  transform: scale(1.05);
+}
+
+.dish span {
+  align-self: center;
+  margin: 10%;
+  font-size: 130%;
+  font-weight: 500;
+}
+
+.dish img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.reservation {
+  z-index: 0;
+}
+
+.right-div {
+  z-index: 0;
+}
+
+.reservation,
+.location {
+  flex: 1;
+  margin-top: -80px;
+  z-index: 0;
+  background-color: white;
+  padding: 5px 20px 20px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reservation h2,
+.location h2 {
+  margin-bottom: 20px;
+  font-size: 200%;
+  font-weight: 500;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.reservation form,
+.location form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reservation label,
+.location label {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-time-row {
+  display: flex;
+  gap: 10px;
+}
+
+.date-time-row label {
+  flex: 1;
+}
+
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.reservation-button {
+  background-color: #2b3145;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 0; /* Remove rounded corners */
+  border-bottom: 2px solid #2b3145;
+  cursor: pointer;
+}
+
+.map {
+  margin-top: 20px;
+}
+
+.map img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+address,
+phone {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; /* Adjust the gap as needed */
+  padding: 20px; /* Adjust the padding as needed */
+  margin-bottom: 2%;
+}
+
+.photos img {
+  width: 500px; /* Set the desired width */
+  height: 300px; /* Set the desired height */
+  border-radius: 10px; /* Adjust the border radius as needed */
+  object-fit: cover; /* Ensure images cover the area without distortion */
+  border: 2px solid #000000;
+}
+
+.menu img {
+  width: 450px; /* Set the desired width */
+  height: 600px; /* Set the desired height */
+  border-radius: 10px; /* Adjust the border radius as needed */
+  object-fit: cover; /* Ensure images cover the area without distortion */
+  border: 2px solid #000000;
+  padding: 1.5%;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; /* Adjust the gap as needed */
+  padding: 20px; /* Adjust the padding as needed */
+  justify-items: center; /* Center images horizontally */
+  align-items: center; /* Center images vertically */
+}
+
+.read-more-less {
+  font-weight: bolder;
+  color: #2b3145;
+  cursor: pointer;
+}
+

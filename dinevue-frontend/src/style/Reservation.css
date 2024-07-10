@@ -1,0 +1,88 @@
+.reservation {
+  top: 0;
+  flex: 1;
+  margin-top: -80px;
+  z-index: 10; /* Increase z-index to ensure it stays on top */
+  background-color: white;
+  padding: 5px 20px 20px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reservation h2 {
+  margin-bottom: 20px;
+  font-size: 200%;
+  font-weight: 500;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.reservation form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reservation label {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-time-row {
+  display: flex;
+  gap: 10px;
+}
+
+.date-time-row label {
+  flex: 1;
+}
+
+.reservation-select,
+.reservation-date,
+.reservation-time,
+.reservation-text {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #2b3145;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px; /* Ensure both inputs have the same height */
+  background-color: transparent;
+}
+
+.reservation-date::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.reservation-button {
+  background-color: #2b3145;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 0; /* Remove rounded corners */
+  border-bottom: 2px solid #2b3145;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.map {
+  margin-top: 20px;
+}
+
+.map img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+address,
+phone {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}

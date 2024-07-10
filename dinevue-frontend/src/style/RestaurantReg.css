@@ -1,0 +1,291 @@
+/* Reset some basic styles to avoid scrollbars */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto; /* Allow scrolling */
+    font-family: 'Outfit', sans-serif;
+}
+  
+.registration-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure full viewport height */
+    box-sizing: border-box;
+    background-size: cover;
+    background-color: #2D3452; /* Background color similar to the right-side image */
+}
+  
+.registration-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1500px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+  
+.registration-left,
+.registration-right {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.registration-form {
+    margin-left: 30%;
+    width: 50%;
+    max-width: 600px; /* Adjust the max-width for more space */
+    min-width: 300px; /* Ensure the div does not get too small */
+    height: auto; /* Make the height responsive */
+    background-color: #d3d3d3;
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+  
+.registration-form h2 {
+    margin-bottom: 20px;
+    color: #000;
+    font-size: 32px;
+    text-align: center;
+}
+  
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+  
+.progress-indicator span {
+    width: 30px;
+    height: 30px;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-weight: bold;
+}
+  
+.progress-indicator span.active {
+    background-color: #2c2f48;
+    color: white;
+}
+  
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+  
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #000;
+    font-weight: bold;
+}
+  
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+  
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+  
+.password-container {
+    display: flex;
+    align-items: center;
+}
+  
+.password-container input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+}
+  
+.password-container .toggle-password {
+    margin-left: -30px;
+    cursor: pointer;
+    color: #2c2f48;
+    z-index: 1;
+    padding-right: 10px;
+}
+  
+.registration-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2c2f48;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 10px;
+}
+  
+.registration-button:hover {
+    background-color: #1e213b;
+}
+  
+.additional-links {
+    margin-top: 15px;
+    text-align: center;
+}
+  
+.additional-links a {
+    color: #2c2f48;
+    text-decoration: none;
+    font-weight: bold;
+}
+  
+.additional-links .forgot-password {
+    display: block;
+    color: #2c2f48;
+    font-weight: normal;
+}
+  
+.form-group input[type="file"] {
+    padding: 0;
+}
+  
+.form-group input[type="file"] {
+    margin-top: 10px;
+}
+  
+@media (max-width: 768px) {
+    .registration-form {
+        padding: 20px;
+        min-width: 250px; /* Ensure the div does not get too small */
+        max-width: 100%; /* Adjust width to fit the screen */
+    }
+  
+    .registration-form h2 {
+        font-size: 24px;
+    }
+  
+    .registration-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+  
+@media (max-width: 480px) {
+    .registration-form {
+        padding: 15px;
+        min-width: 200px; /* Ensure the div does not get too small */
+        max-width: 100%; /* Adjust width to fit the screen */
+    }
+  
+    .registration-form h2 {
+        font-size: 20px;
+    }
+  
+    .form-group input,
+    .form-group textarea,
+    .password-container input {
+        padding: 8px;
+    }
+  
+    .registration-button {
+        font-size: 12px;
+        padding: 10px;
+    }
+  
+    .password-container .toggle-password {
+        margin-left: -25px;
+        padding-right: 5px;
+    }
+}
+
+/* Add this to your existing CSS */
+
+.registration-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2c2f48;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.registration-button:hover {
+    background-color: #1e213b;
+}
+
+.selected-tags {
+    margin-top: 10px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #2c2f48;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .registration-form {
+        padding: 20px;
+        min-width: 250px; /* Ensure the div does not get too small */
+        max-width: 100%; /* Adjust width to fit the screen */
+    }
+
+    .registration-form h2 {
+        font-size: 24px;
+    }
+
+    .registration-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-form {
+        padding: 15px;
+        min-width: 200px; /* Ensure the div does not get too small */
+        max-width: 100%; /* Adjust width to fit the screen */
+    }
+
+    .registration-form h2 {
+        font-size: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .password-container input {
+        padding: 8px;
+    }
+
+    .registration-button {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .password-container .toggle-password {
+        margin-left: -25px;
+        padding-right: 5px;
+    }
+}

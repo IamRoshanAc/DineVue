@@ -1,0 +1,81 @@
+html, body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2D3452; /* Dark blue background */
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays above other content */
+    border-style: solid;
+    border-color: #ffffff;
+  }
+  
+  .navbarLeft {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbarLogo {
+    width: 110px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .navbarRight {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbarIcon {
+    color: white;
+    font-size: 24px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .profileDropdown {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .dropdownToggle {
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    padding: 0;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .dropdownMenu {
+    background-color: #ffffff;
+    border: none;
+    border-color: black;
+    border-style: solid;
+  }
+  
+  .dropdownItem {
+    color: rgb(0, 0, 0);
+  }
+  
+  .dropdownItem:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent hover color */
+  }
+  
+  .dropdownIcon {
+    font-size: 18px;
+    margin-left: 5px;
+    color: white;
+  }
+  
+  

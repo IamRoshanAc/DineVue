@@ -1,0 +1,70 @@
+.search-bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2e3252;
+  padding: 50px 20px;
+  margin-top: 1px;
+}
+
+.title {
+  color: white;
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 700px; /* Adjust as necessary */
+}
+
+.search-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  color: #383838; /* Customize icon color */
+  font-size: 1.5em; /* Set size relative to input font size */
+  margin-right: 10px; /* Adjust spacing between icon and input */
+}
+
+.searchbar-input {
+  border: none;
+  outline: none;
+  font-size: 1.5em;
+  flex-grow: 1;
+  border-radius: 10px;
+  background-color: transparent; /* Ensure background is transparent */
+  box-shadow: none; /* Remove default box shadow */
+}
+
+.searchbar-input:focus {
+  outline: none; /* Ensure no outline on focus */
+  box-shadow: none; /* Ensure no box shadow on focus */
+}
+
+.search-button {
+  background-color: #2e3252;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 2.1em;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+  border-style: solid;
+  margin-left: 3px; /* Slight overlap to cover the border radius */
+}
+
+.search-button:hover {
+  background-color: #454a75;
+}
