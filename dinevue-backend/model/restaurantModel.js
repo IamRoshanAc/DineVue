@@ -71,7 +71,17 @@ const Restaurant = sequelize.define('Restaurant', {
     rating:{
         type:INTEGER,
         defaultValue: 0
-    }
+    },
+    openingtime: {
+        type: DataTypes.TIME,
+        defaultValue:10,
+        allowNull: true
+    },
+    closingtime: {
+        type: DataTypes.TIME,
+        defaultValue:24,
+        allowNull: true
+    },
 });
 
 module.exports = {

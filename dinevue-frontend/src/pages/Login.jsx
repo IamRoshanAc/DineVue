@@ -30,30 +30,29 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    const data = {
+      email: email,
+      password: password
+    };
 
     try {
-      const response = await loginUserApi({ email, password });
-      if (response.status === 200) {
-        const { token, user } = response.data;
-
+      const response = await loginUserApi(data);
+      if (response.data.success === false) {
+        toast.error(response.data.message);
+      } else {
+        toast.success(response.data.message);
         // Set token and user data in local storage
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-
-        toast.success('Login successful');
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.userData));
 
         setTimeout(() => {
           navigate('/home'); // Redirect to the home page
         }, 2000); // Delay for 2 seconds to show the toast message
-      } else {
-        toast.error('Login failed');
       }
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error('Server error');
-      }
+    } catch (err) {
+      toast.error("Server Error");
+      console.log(err.message);
     }
   };
 

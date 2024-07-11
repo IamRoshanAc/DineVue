@@ -1,8 +1,7 @@
 .reservation {
-  top: 0;
   flex: 1;
   margin-top: -80px;
-  z-index: 10; /* Increase z-index to ensure it stays on top */
+  z-index: 10;
   background-color: white;
   padding: 5px 20px 20px 20px;
   border-radius: 10px;
@@ -29,12 +28,14 @@
   flex-direction: column;
 }
 
-.date-time-row {
+.date-time-row,
+.diner-details-row {
   display: flex;
   gap: 10px;
 }
 
-.date-time-row label {
+.date-time-row label,
+.diner-details-row label {
   flex: 1;
 }
 
@@ -52,7 +53,7 @@
   cursor: pointer;
   width: 100%;
   box-sizing: border-box;
-  height: 40px; /* Ensure both inputs have the same height */
+  height: 40px;
   background-color: transparent;
 }
 
@@ -65,24 +66,109 @@
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 0; /* Remove rounded corners */
-  border-bottom: 2px solid #2b3145;
   border-radius: 50px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
-.map {
-  margin-top: 20px;
-}
-
-.map img {
-  width: 100%;
+.reservation-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 800px;
+  background-color: white;
+  padding: 50px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  outline: none;
 }
 
-address,
-phone {
-  display: block;
+.reservation-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modall-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.restaurant-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-left: 3px;
+}
+
+.restaurant-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.restaurant-details-row {
+  display: flex;
+  gap: 10px;
+}
+
+.restaurant-details-row p {
+  margin: 0;
+}
+
+.diner-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.diner-details label {
+  font-size: 1rem;
+}
+
+.reservation-text {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #2b3145;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.reservation-text::placeholder {
+  color: #999;
+}
+
+.contact-message {
+  color: red;
+  font-size: 0.7rem;
+  white-space: pre-wrap;
   margin-top: 10px;
   text-align: center;
+}
+
+.reservation-button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+  color: white;
 }

@@ -19,6 +19,7 @@ import RestaurantReg from './pages/restaurant/RestaurantReg';
 import AdminDashboard from './pages/admin/dashboard';
 import RestaurantLog from './pages/restaurant/RestaurantLog';
 import Profile from './pages/Profile';
+import Index_Restaurant_View from './pages/Index_Restaurant_View';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/home' element={<Home/>} />
         <Route path="/restaurant_view/:id" element={<Restaurant_View />} />
         <Route path='/profile' element={<Profile/>} />
+        <Route path='/index_restaurant_view/:id' element={<Index_Restaurant_View/>} />
 
         {/* restaurants */}
         <Route path='/restaurant_reg' element={<RestaurantReg/>} />
