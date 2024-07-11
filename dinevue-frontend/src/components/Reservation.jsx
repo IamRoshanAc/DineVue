@@ -3,7 +3,8 @@ import Modal from "react-modal";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../style/Reservation.css';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
+import { createReservationApi } from "../apis/Api";
 
 Modal.setAppElement('#root');
 
@@ -15,6 +16,8 @@ const Reservation = ({ restaurant }) => {
   const [seatingOption, setSeatingOption] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [occasion, setOccasion] = useState(""); // Added
+  const [specialRequests, setSpecialRequests] = useState(""); // Added
   const [timeOptions, setTimeOptions] = useState([]);
   const [showContactMessage, setShowContactMessage] = useState(false);
   const [seatingOptions, setSeatingOptions] = useState([]);
@@ -69,6 +72,29 @@ const Reservation = ({ restaurant }) => {
 
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+  const completeReservation = async () => {
+    const reservationData = {
+      restaurantId: restaurant.id,
+      numberOfPeople: parseInt(partySize),
+      date: date,
+      time: time,
+      seatingType: seatingOption,
+      customerPhone: phone,
+      customerEmail: email,
+      occasion: occasion, // Added
+      specialRequests: specialRequests, // Added
+    };
+
+    try {
+      const result = await createReservationApi(reservationData);
+      toast.success("Reservation completed successfully!");
+      setModalIsOpen(false); // Close the modal
+    } catch (error) {
+      console.error('Error during reservation:', error); // Add this line for debugging
+      toast.error(`Failed to complete reservation: ${error.message}`);
+    }
   };
 
   return (
@@ -150,7 +176,7 @@ const Reservation = ({ restaurant }) => {
       >
         <div className="modal-content">
           <h2>One step away from reserving your table!</h2>
-          <div className="modall-header">
+          <div className="modal-header">
             <img src={restaurant.coverphoto} alt="Restaurant" className="restaurant-image" />
             <div className="restaurant-details">
               <h3>{restaurant.restaurantName}</h3>
@@ -187,19 +213,29 @@ const Reservation = ({ restaurant }) => {
             <div className="diner-details-row">
               <label>
                 Select Occasion (Optional)
-                <select className="reservation-select">
-                  <option>Birthday</option>
-                  <option>Anniversary</option>
-                  <option>None</option>
+                <select 
+                  className="reservation-select"
+                  value={occasion} // Updated
+                  onChange={(e) => setOccasion(e.target.value)} // Updated
+                >
+                  <option value="">None</option>
+                  <option value="Birthday">Birthday</option>
+                  <option value="Anniversary">Anniversary</option>
                 </select>
               </label>
               <label>
                 Special Requests (Optional)
-                <input type="text" className="reservation-text" placeholder="Special Requests" />
+                <input 
+                  type="text" 
+                  className="reservation-text" 
+                  placeholder="Special Requests" 
+                  value={specialRequests} // Updated
+                  onChange={(e) => setSpecialRequests(e.target.value)} // Updated
+                />
               </label>
             </div>
           </div>
-          <button className="reservation-button">Complete Reservation</button>
+          <button className="reservation-button" onClick={completeReservation}>Complete Reservation</button>
         </div>
       </Modal>
 
