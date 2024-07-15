@@ -1,64 +1,65 @@
-// models/reservation.js
+// models/reservationModel.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/db');
-const Restaurant = require('./restaurantModel').Restaurant;
+const User = require('./userModel'); // Ensure this is the correct path
 
 const Reservation = sequelize.define('Reservation', {
-    reservationId: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    numberOfPeople: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    date: {
-        type: DataTypes.DATEONLY,
-        allowNull: false
-    },
-    time: {
-        type: DataTypes.TIME,
-        allowNull: false
-    },
-    seatingType: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    customerPhone: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    customerEmail: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    occasion: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    specialRequests: {
-        type: DataTypes.TEXT,
-        allowNull: true
-    },
-    status: {
-        type: DataTypes.ENUM('pending', 'confirmed', 'cancelled'),
-        defaultValue: 'pending',
-        allowNull: false
-    },
-    restaurantId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'restaurants',
-            key: 'id'
-        }
-    }
+  reservationId: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  restaurantId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  numberOfPeople: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  date: {
+    type: DataTypes.DATEONLY,
+    allowNull: false,
+  },
+  time: {
+    type: DataTypes.TIME,
+    allowNull: false,
+  },
+  seatingType: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  customerPhone: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  customerEmail: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  occasion: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  specialRequests: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  status: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: 'pending',
+  },
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 }, {
-    tableName: 'reservations',
+  tableName: 'reservations',
 });
 
-// Establish association
-Restaurant.hasMany(Reservation, { foreignKey: 'restaurantId', sourceKey: 'id' });
-Reservation.belongsTo(Restaurant, { foreignKey: 'restaurantId', targetKey: 'id' });
+// Establish associations
+User.hasMany(Reservation, { foreignKey: 'userId' });
+Reservation.belongsTo(User, { foreignKey: 'userId' });
 
 module.exports = Reservation;

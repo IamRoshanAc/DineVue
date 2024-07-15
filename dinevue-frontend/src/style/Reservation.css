@@ -1,3 +1,6 @@
+html, body {
+  font-family: 'Outfit', sans-serif;
+}
 .reservation {
   flex: 1;
   margin-top: -80px;

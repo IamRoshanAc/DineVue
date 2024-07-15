@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 import Reservation from "../components/Reservation";
 import Location from "../components/Location";
 import { FaBookmark } from "react-icons/fa";
-import RestaurantInfo from "../components/ResrtaurantInfo";
+import RestaurantInfo from "../components/RestaurantInfo";
 import { getSingleRestaurantApi } from '../apis/Api'; // Adjust the import according to your project structure
 
 const Restaurant_View = () => {

@@ -1,17 +1,22 @@
-// models/user.js
+// models/userModel.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/db');
 
 const User = sequelize.define('User', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   firstName: {
     type: DataTypes.STRING,
     allowNull: false,
-    field: 'first_name' // specify the database column name
+    field: 'first_name'
   },
   lastName: {
     type: DataTypes.STRING,
     allowNull: false,
-    field: 'last_name' // specify the database column name
+    field: 'last_name'
   },
   email: {
     type: DataTypes.STRING,
@@ -29,10 +34,18 @@ const User = sequelize.define('User', {
   isAdmin: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
-    field: 'is_admin' // specify the database column name
+    field: 'is_admin'
   },
+  resetCode: {
+    type: DataTypes.STRING,
+    allowNull: true, // Allows null if no reset code is set
+  },
+  resetCodeExpiration: {
+    type: DataTypes.DATE,
+    allowNull: true, // Allows null if no reset code expiration is set
+  }
 }, {
-  tableName: 'users', // specify the table name
+  tableName: 'users',
 });
 
 module.exports = User;

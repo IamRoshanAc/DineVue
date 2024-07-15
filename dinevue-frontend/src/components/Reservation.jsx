@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../style/Reservation.css';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode'; // Correct the import
 import { createReservationApi } from "../apis/Api";
 
 Modal.setAppElement('#root');
@@ -22,6 +22,7 @@ const Reservation = ({ restaurant }) => {
   const [showContactMessage, setShowContactMessage] = useState(false);
   const [seatingOptions, setSeatingOptions] = useState([]);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [userId, setUserId] = useState(""); // Added
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -30,6 +31,7 @@ const Reservation = ({ restaurant }) => {
         const decodedToken = jwtDecode(token);
         setPhone(decodedToken.phone || "");
         setEmail(decodedToken.email || "");
+        setUserId(decodedToken.id || ""); // Extract userId from token
       } catch (err) {
         console.error('Failed to decode token', err);
       }
@@ -62,8 +64,7 @@ const Reservation = ({ restaurant }) => {
 
   const handleReservationSubmit = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
-    if (token) {
+    if (userId) { // Check if userId is available
       setModalIsOpen(true);
     } else {
       toast.error("Login before reservation");
@@ -85,15 +86,16 @@ const Reservation = ({ restaurant }) => {
       customerEmail: email,
       occasion: occasion, // Added
       specialRequests: specialRequests, // Added
+      userId: userId // Added
     };
 
     try {
       const result = await createReservationApi(reservationData);
-      toast.success("Reservation completed successfully!");
+      toast.success(result.message || "Reservation completed successfully!"); // Display backend message
       setModalIsOpen(false); // Close the modal
     } catch (error) {
-      console.error('Error during reservation:', error); // Add this line for debugging
-      toast.error(`Failed to complete reservation: ${error.message}`);
+      console.error('Error during reservation:', error);
+      toast.error(error.response?.data?.error || `We are out of seats please select different time or different table `);
     }
   };
 

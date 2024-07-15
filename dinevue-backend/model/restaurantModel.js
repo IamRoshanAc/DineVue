@@ -1,5 +1,4 @@
-// models/restaurantModel.js
-const { DataTypes, INTEGER } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../database/db');
 
 const Restaurant = sequelize.define('Restaurant', {
@@ -69,7 +68,7 @@ const Restaurant = sequelize.define('Restaurant', {
     defaultValue: false
   },
   rating: {
-    type: INTEGER,
+    type: DataTypes.INTEGER, // Use DataTypes.INTEGER instead of INTEGER
     defaultValue: 0
   },
   openingtime: {

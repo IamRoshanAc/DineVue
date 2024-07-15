@@ -1,0 +1,67 @@
+/* Tooltip.css */
+html, body {
+  font-family: 'Outfit', sans-serif;
+}
+.nav-tooltip {
+  position: absolute;
+  top: 40px; /* Adjust as needed to position below the icon */
+  left: 90%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 250px;
+}
+
+.nav-modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.nav-reservation-card {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-restaurant-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.nav-reservation-details {
+  font-size: 14px;
+  color: #666;
+}
+
+.nav-detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.nav-icon {
+  margin-right: 5px;
+}
+
+.nav-view-all {
+  display: inline-block;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.nav-view-all:hover {
+  text-decoration: underline;
+}

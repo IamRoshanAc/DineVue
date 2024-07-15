@@ -1,0 +1,50 @@
+html, body {
+  font-family: 'Outfit', sans-serif;
+}
+.dashboard {
+  padding: 20px;
+  max-width: 1200px; /* Increase max-width to fit both charts */
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center; /* Center the h2 text */
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.chart-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart-row .section {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.reservation, .review {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.reservation p, .review p {
+  margin: 5px 0;
+}
+
+.reservation p strong, .review p strong {
+  color: #555;
+}

@@ -5,12 +5,13 @@ import SearchBar from '../components/Search'
 import PopularSlider from '../components/PopularSlider'
 import TopSlider from '../components/TopSliders'
 import NewSlider from '../components/NewSlider'
+import Noscrollnav from '../components/noscroll'
 const Home = () =>{
 
 
 return(
 <>
-<Navbar/>
+<Noscrollnav/>
 <SearchBar/>
 <br/>
 <PopularSlider/>

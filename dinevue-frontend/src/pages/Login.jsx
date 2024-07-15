@@ -8,11 +8,13 @@ import '../style/Login.css';
 import backgroundImage from '../images/Untitled design (4).png';
 import logoImage from '../images/logo.png';
 import { loginUserApi } from '../apis/Api';
+import ForgetPasswordModal from '../components/codeModal';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,10 +32,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const data = {
       email: email,
-      password: password
+      password: password,
     };
 
     try {
@@ -42,16 +44,15 @@ const Login = () => {
         toast.error(response.data.message);
       } else {
         toast.success(response.data.message);
-        // Set token and user data in local storage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.userData));
 
         setTimeout(() => {
-          navigate('/home'); // Redirect to the home page
-        }, 2000); // Delay for 2 seconds to show the toast message
+          navigate('/home');
+        }, 2000);
       }
     } catch (err) {
-      toast.error("Server Error");
+      toast.error('Server Error');
       console.log(err.message);
     }
   };
@@ -64,25 +65,25 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                value={email} 
-                onChange={handleEmailChange} 
-                required 
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={handleEmailChange}
+                required
               />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
               <div className="password-wrapper">
-                <input 
-                  type={passwordVisible ? "text" : "password"} 
-                  id="password" 
-                  name="password" 
-                  value={password} 
-                  onChange={handlePasswordChange} 
-                  required 
+                <input
+                  type={passwordVisible ? 'text' : 'password'}
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
                 />
                 <span className="toggle-password" onClick={togglePasswordVisibility}>
                   <FontAwesomeIcon icon={passwordVisible ? faEyeSlash : faEye} />
@@ -95,7 +96,13 @@ const Login = () => {
             <button type="submit" className="login-button">Login</button>
           </form>
           <div className="additional-links">
-            <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
+            <a
+              href="#"
+              className="forgot-password"
+              onClick={() => setShowForgotPasswordModal(true)}
+            >
+              Forgot Password?
+            </a>
           </div>
         </div>
         <div className="login-right">
@@ -103,6 +110,10 @@ const Login = () => {
         </div>
       </div>
       <ToastContainer />
+      <ForgetPasswordModal
+        show={showForgotPasswordModal}
+        handleClose={() => setShowForgotPasswordModal(false)}
+      />
     </div>
   );
 };

@@ -1,0 +1,174 @@
+html, body {
+    font-family: 'Outfit', sans-serif;
+}
+.search-view {
+    display: flex;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: 10%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-filters {
+    width: 50%;
+    margin-right: 20px;
+}
+
+.search-filter-group {
+    margin-bottom: 30px;
+    width: 180px;
+}
+
+.search-filter-group h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.search-filter-group label {
+    display: block;
+    margin-bottom: 10px;
+    
+}
+
+.search-sort-options {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 80%;
+    
+}
+
+.search-sort-options label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.search-sort-options select {
+    margin-left: 10px;
+    padding: 5px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    width: 15%;
+}
+
+.search-restaurant-list {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+.search-card-img-top {
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.search-card-body {
+    flex: 1;
+}
+
+.search-card-title {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.search-rating {
+    margin: 5px 0;
+}
+
+.search-star {
+    color: orange;
+    margin-right: 2px;
+}
+
+.search-star.filled {
+    color: orange;
+}
+
+.search-card-text {
+    margin: 5px 0;
+}
+
+.search-categories {
+    display: flex;
+    gap: 10px;
+}
+
+.search-category {
+    background-color: #3949ab;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+/* SearchView.css */
+.search-view {
+    padding: 20px;
+}
+
+.search-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-restaurant-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-restaurant-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+
+
+.search-card-body {
+    padding: 10px;
+}
+
+.search-card-title {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.search-rating {
+    margin: 5px 0;
+}
+
+.search-card-text {
+    font-size: 0.875rem;
+    color: #555;
+}

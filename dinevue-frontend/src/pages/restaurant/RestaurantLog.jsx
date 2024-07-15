@@ -29,14 +29,20 @@ const RestaurantLog = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const data = {
+            restaurantEmail,
+            password
+        };
+
         try {
-            const response = await loginRestaurantApi({ restaurantEmail, password });
+            const response = await loginRestaurantApi(data);
             if (response.status === 200) {
-                const { token, user } = response.data;
+                const { token, restaurant } = response.data;
 
                 // Set token and user data in local storage
                 localStorage.setItem('token', token);
-                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('user', JSON.stringify(restaurant));
 
                 toast.success('Login successful');
 

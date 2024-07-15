@@ -2,6 +2,7 @@ const { Restaurant } = require('../model/restaurantModel'); // Ensure the correc
 const cloudinary = require('cloudinary').v2;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 // Function to upload images to Cloudinary
 const uploadImages = async (files) => {
@@ -48,14 +49,11 @@ const createRestaurant = async (req, res) => {
     }
 
     try {
-        // Parse necessary fields if they are not already parsed by bodyParser or similar middleware
         const parsedTags = Array.isArray(tags) ? tags : JSON.parse(tags);
         const parsedLocation = Array.isArray(location) ? location : JSON.parse(location);
         const parsedPopularDishes = Array.isArray(popularDishes) ? popularDishes : JSON.parse(popularDishes);
         const parsedSeatingDetails = Array.isArray(seatingDetails) ? seatingDetails : JSON.parse(seatingDetails);
-
-        // Ensure foods is parsed correctly
-        const parsedFoods = Array.isArray(foods) ? foods : [foods]; // Ensure foods is an array
+        const parsedFoods = Array.isArray(foods) ? foods : JSON.parse(foods);
 
         // Upload images to Cloudinary
         const uploadedPhotos = await uploadImages(photos);
@@ -139,7 +137,6 @@ const getSingleRestaurant = async (req, res) => {
     }
 };
 
-// Restaurant login function
 const loginRestaurant = async (req, res) => {
     try {
         const { restaurantEmail, password } = req.body;
@@ -157,21 +154,30 @@ const loginRestaurant = async (req, res) => {
         }
 
         // Check if the restaurant is approved
-        if (restaurant.approved !== true) {
-            return res.status(403).json({ message: 'Yet to be approved' });
+        if (!restaurant.approved) {
+            return res.status(403).json({ message: 'Restaurant is not approved yet' });
         }
 
-        // Compare the provided password with the stored hashed password
-        const isMatch = await bcrypt.compare(password, restaurant.password);
+        // Compare the provided password with the stored password
+        let isMatch = false;
+        if (restaurant.password.startsWith('$2b$')) {
+            // If the stored password is hashed
+            isMatch = await bcrypt.compare(password, restaurant.password);
+        } else {
+            // If the stored password is plaintext (for backward compatibility)
+            isMatch = password === restaurant.password;
+        }
 
         if (!isMatch) {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
 
         // Generate a JWT token
-        const token = jwt.sign({ id: restaurant.id, email: restaurant.restaurantEmail }, process.env.JWT_TOKEN_SECRET, {
-            expiresIn: '1h',
-        });
+        const token = jwt.sign(
+            { id: restaurant.id, email: restaurant.restaurantEmail },
+            process.env.JWT_TOKEN_SECRET,
+            { expiresIn: '1h' }
+        );
 
         // Include restaurant details in the response
         const restaurantDetails = {
@@ -190,11 +196,55 @@ const loginRestaurant = async (req, res) => {
             coverphoto: restaurant.coverphoto,
             menuPhotos: restaurant.menuPhotos,
             dishesphotos: restaurant.dishesphotos,
+            approved: restaurant.approved,
+            rating: restaurant.rating,
+            openingtime: restaurant.openingtime,
+            closingtime: restaurant.closingtime,
         };
 
-        res.status(200).json({ message: 'Login successful', token, restaurant: restaurantDetails });
+        res.status(200).json({
+            message: 'Login successful',
+            token,
+            restaurant: restaurantDetails
+        });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
+
+// Update the approved status of a restaurant
+const updateRestaurantApproval = async (req, res) => {
+    const id = req.params.id;
+    const { approved } = req.body;
+
+    if (typeof approved !== 'boolean') {
+        return res.status(400).json({
+            success: false,
+            message: "Approved status must be a boolean value."
+        });
+    }
+
+    try {
+        const restaurant = await Restaurant.findByPk(id);
+        if (!restaurant) {
+            return res.status(404).json({
+                success: false,
+                message: "Restaurant not found"
+            });
+        }
+
+        restaurant.approved = approved;
+        await restaurant.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Restaurant approval status updated successfully",
+            data: restaurant
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Server Error", error: error.message });
     }
 };
 
@@ -202,5 +252,6 @@ module.exports = {
     createRestaurant,
     getAllRestaurants,
     getSingleRestaurant,
-    loginRestaurant
+    loginRestaurant,
+    updateRestaurantApproval
 };

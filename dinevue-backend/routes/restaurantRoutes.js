@@ -11,7 +11,10 @@ router.get('/getAllRestaurants', restaurantController.getAllRestaurants);
 // GET route to fetch a single restaurant by ID
 router.get('/restaurant/:id', restaurantController.getSingleRestaurant);
 
-
+// POST route for restaurant login
 router.post('/loginRestaurant', restaurantController.loginRestaurant);
+
+// PUT route to update the approval status of a restaurant
+router.put('/restaurant/:id/approve', restaurantController.updateRestaurantApproval);
 
 module.exports = router;

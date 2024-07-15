@@ -110,13 +110,65 @@ html, body {
   color: white;
   border: 2px solid white;
 }
+.logout-button{
+  background-color: white;
+  color: black;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 3px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
 
-.login-button:hover,
+
+.login-button:hover,.logout-button:hover
 .signup-button:hover {
   transform: scale(1.05);
 }
 
-.login-button:focus,
+.login-button:focus,.logout-button:hover
 .signup-button:focus {
   outline: none;
+}
+
+/* Navbar.css */
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-box {
+  background: #2b3145;
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+.dialog-box p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.dialog-box button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 100px;
+  color: #2b3145;
+  background-color: #ffffff;
+  cursor: pointer;
 }

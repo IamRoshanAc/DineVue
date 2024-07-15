@@ -1,21 +1,45 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../database/db');
-const Restaurant = require('./restaurantModel');
-const User = require('./userModel');
+// reviewModel.js
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../database/db'); // Adjust path as per your folder structure
 
-const Review = sequelize.define('Review', {
-    rating: {
+class Review extends Model {}
+
+Review.init({
+    FoodRating: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            min: 1,
-            max: 5
-        }
+        allowNull: false
     },
-    comment: {
+    ServiceRating: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    AmbienceRating: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    OverallRating: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    ReviewText: {
         type: DataTypes.TEXT,
-        allowNull: true
+        allowNull: false
+    },
+    UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    RestaurantId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    UserName: {
+        type: DataTypes.STRING, // Ensure data type matches the one you've added in the database
+        allowNull: false
     }
+}, {
+    sequelize,
+    modelName: 'Review'
 });
 
 module.exports = Review;

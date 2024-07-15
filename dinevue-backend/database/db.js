@@ -14,7 +14,7 @@ const syncModels = async () => {
     console.log('Connection has been established successfully.');
 
     // Synchronize models with the database
-    await sequelize.sync({ force: false }); // Use 'force: true' only in development to drop and recreate tables
+    await sequelize.sync({ alter: true }); // Use 'alter' to update schema without dropping tables
     console.log('All models were synchronized successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);

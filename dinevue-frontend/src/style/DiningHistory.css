@@ -1,0 +1,97 @@
+/* src/style/DiningHistory.css */
+
+.dining-history-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.dining-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    gap: 20px;
+    position: relative;
+    max-width: 600px;
+}
+
+.dining-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.dining-details {
+    flex-grow: 1;
+}
+
+.dining-details h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dining-details p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.dining-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.message-icon {
+    font-size: 30px;
+    padding-right: 30px;
+    color: #2D3452;
+    cursor: pointer;
+}
+
+.reserve-button {
+    background-color: #2D3452;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.reserve-button:hover {
+    background-color: #000064;
+}
+
+@media (max-width: 600px) {
+    .dining-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dining-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .dining-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .reserve-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.CancelButton{
+    color: #ff0000;
+    padding-right: 10px;
+}
+

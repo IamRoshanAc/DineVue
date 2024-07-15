@@ -21,11 +21,11 @@ const Footer = () => {
                     </div>
                     <div className="links-column">
                         <h3>DINEVUE</h3>
-                        <a href="#">About Us</a>
+                        <a href="/aboutUs">About Us</a>
                     </div>
                     <div className="links-column">
                         <h3>SUPPORT</h3>
-                        <a href="#">FAQs</a>
+                        <a href="/faqs">FAQs</a>
                     </div>
                     <div className="links-column">
                         <h3>BUSINESS</h3>

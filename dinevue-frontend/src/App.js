@@ -20,6 +20,13 @@ import AdminDashboard from './pages/admin/dashboard';
 import RestaurantLog from './pages/restaurant/RestaurantLog';
 import Profile from './pages/Profile';
 import Index_Restaurant_View from './pages/Index_Restaurant_View';
+import RestaurantDashboard from './pages/restaurant/RestaurantDashboard';
+import Review from './pages/Review';
+import FAQ from './pages/Faq';
+import DetailsUpdate from './components/restaurant/DetailsUpdate';
+import AboutUs from './pages/AboutUs';
+import SearchView from './pages/SearchView';
+import AdminLog from './pages/admin/admin_login';
 
 
 function App() {
@@ -34,12 +41,18 @@ function App() {
         <Route path="/restaurant_view/:id" element={<Restaurant_View />} />
         <Route path='/profile' element={<Profile/>} />
         <Route path='/index_restaurant_view/:id' element={<Index_Restaurant_View/>} />
+        <Route path='/review/:id' element={<Review/>} />
+        <Route path='/faqs' element={<FAQ/>} />
+        <Route path='/aboutUs' element={<AboutUs/>} />
+        <Route path='/search' element={<SearchView/>} />
 
         {/* restaurants */}
         <Route path='/restaurant_reg' element={<RestaurantReg/>} />
         <Route path='/restaurant_log' element={<RestaurantLog/>} />
+        <Route path='/restaurant_dashboard' element={<RestaurantDashboard/>} />
 
         {/* admin */}
+        <Route path='/admin_log' element={<AdminLog/>} />
         <Route path='/admin_dashboard' element={<AdminDashboard/>} />
 
         {/* <Route element={<UserRoutes/>}>

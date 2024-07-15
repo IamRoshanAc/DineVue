@@ -1,0 +1,116 @@
+/* Apply the background color and text color to the whole page */
+body {
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  .aboutus-container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .aboutus-intro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .aboutus-text {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .aboutus-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .aboutus-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .aboutus-image {
+    flex: 1;
+  }
+  
+  .aboutus-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: rounded corners for image */
+  }
+  
+  .aboutus-mission,
+  .aboutus-values {
+    margin-bottom: 40px;
+  }
+  
+  .aboutus-mission h2,
+  .aboutus-values h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .aboutus-mission p,
+  .aboutus-values p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .mission-image {
+    margin-top: 20px;
+  }
+  
+  .mission-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: rounded corners for image */
+  }
+  
+  .aboutus-values {
+    padding: 0;
+  }
+  
+  .values-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .value-item,
+  .value-item-right {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+  }
+  
+  .value-item {
+    flex-direction: row;
+  }
+  
+  .value-item-right {
+    flex-direction: row-reverse;
+    justify-content: flex-end; /* Aligns to the right */
+  }
+  
+  .value-icon {
+    width: 50px;
+    height: 50px;
+    color: #2D3452; /* Icon color */
+  }
+  
+  .value-text {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Vertically centers text within its container */
+  }
+  
+  .value-item .value-text {
+    margin-left: 20px; /* Space between icon and text when icon is on the left */
+  }
+  
+  .value-item-right .value-text {
+    margin-right: 20px; /* Space between text and icon when icon is on the right */
+  }
+  
