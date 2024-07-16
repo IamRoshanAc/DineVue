@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { toast} from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../style/Register.css';
 import backgroundImage from '../images/Untitled design (4).png';
 import logoImage from '../images/logo.png';
@@ -67,7 +68,7 @@ const Register = () => {
     <div className="register-page" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="register-container">
         <div className="register-left">
-          <nametop className="text-5xl">Register</nametop>
+          <h1 className="text-5xl">Register</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group">
@@ -146,19 +147,20 @@ const Register = () => {
                   <FontAwesomeIcon icon={confirmPasswordVisible ? faEyeSlash : faEye} />
                 </span>
               </div>
-              <div className="signup-link">
-                Already have an account? <a className="fw-bold" href="/login">Login</a>
-              </div>
             </div>
-            <button type="submit">Create Account</button>
+            <div className="signup-link">
+              Already have an account? <a className="fw-bold" href="/login">Login</a>
+            </div>
+            <button type="submit" className='register-button'>Create Account</button>
           </form>
         </div>
         <div className="register-right">
           <img src={logoImage} alt="DineVue Logo" />
         </div>
       </div>
-      
+      <ToastContainer/>
     </div>
+    
   );
 };
 

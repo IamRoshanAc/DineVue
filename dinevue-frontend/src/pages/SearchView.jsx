@@ -8,6 +8,7 @@ import Footer from '../components/footer';
 import SearchBar from '../components/Search';
 import Noscrollnav from '../components/noscroll';
 import { getAllRestaurantApi } from '../apis/Api'; // Import your API function
+import NavbarIndex from '../components/navbar_index';
 
 const SearchView = () => {
     const [restaurants, setRestaurants] = useState([]);
@@ -120,10 +121,10 @@ const SearchView = () => {
 
         return stars;
     };
-
+    const token = localStorage.getItem('token');
     return (
         <>
-            <Noscrollnav />
+            {token ? <Noscrollnav /> : <NavbarIndex />}
             <SearchBar onSearchChange={handleSearchChange} />
             <div className="search-sort-options">
                 <label>

@@ -14,6 +14,8 @@ const TopSlider = () => {
         const response = await getAllRestaurantApi(token);
         if (response.data.success) {
           const approvedRestaurants = response.data.data.filter(restaurant => restaurant.approved);
+          // Sort restaurants by rating in descending order
+          approvedRestaurants.sort((a, b) => b.rating - a.rating);
           setRestaurants(approvedRestaurants);
         } else {
           toast.error("Failed to fetch restaurants");

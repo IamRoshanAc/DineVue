@@ -30,7 +30,7 @@ const loginUser = async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'Incorrect Password'
       });
     }
 
@@ -155,54 +155,6 @@ const updateUser = async (req, res) => {
     });
   } catch (error) {
     console.error('Update user error:', error);
-    res.status(500).json({
-      success: false,
-      message: "Server Error",
-      error: error.message
-    });
-  }
-};
-
-const changePassword = async (req, res) => {
-  const { oldPassword, newPassword } = req.body;
-  const userId = req.user.id;
-
-  try {
-    const user = await User.findByPk(userId);
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: "User not found.",
-      });
-    }
-
-    const isMatch = await bcrypt.compare(oldPassword, user.password);
-    if (!isMatch) {
-      return res.status(401).json({
-        success: false,
-        message: "Incorrect old password.",
-      });
-    }
-
-    if (!newPassword) {
-      return res.status(400).json({
-        success: false,
-        message: "New password is required.",
-      });
-    }
-
-    const saltRounds = 10;
-    const encryptedPassword = await bcrypt.hash(newPassword, saltRounds);
-
-    user.password = encryptedPassword;
-    await user.save();
-
-    res.status(200).json({
-      success: true,
-      message: "Password changed successfully.",
-    });
-  } catch (error) {
-    console.error('Change password error:', error);
     res.status(500).json({
       success: false,
       message: "Server Error",
@@ -370,13 +322,58 @@ const verifyCodeAndChangePassword = async (req, res) => {
     });
   }
 };
+
+const changePassword = async (req, res) => {
+  const { userId, currentPassword, newPassword } = req.body;
+
+  try {
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found.',
+      });
+    }
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: 'Current password is incorrect.',
+      });
+    }
+
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedNewPassword;
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: 'Password changed successfully.',
+    });
+  } catch (error) {
+    console.error('Change password error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error.',
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
   getAllUsers,
   getUserById,
   updateUser,
-  changePassword,
   deleteUser,
-  generateRandomCode, sendCodeToEmail, requestCode, verifyCodeAndChangePassword, verifyCode
+  generateRandomCode,
+  sendCodeToEmail,
+  requestCode,
+  verifyCodeAndChangePassword,
+  verifyCode,
+  changePassword,
 };

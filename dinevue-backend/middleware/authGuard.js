@@ -1,94 +1,27 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-const authGuard = (req,res,next) => {
+const authGuard = (req, res, next) => {
+  const token = req.headers['authorization'];
 
-    // get header authorization
-    const authHeader = req.headers.authorization;
-    if(!authHeader){
-        return res.json({
-            success: false,
-            message: "Authorization header not found!"
-        })
+  if (!token) {
+    return res.status(403).json({
+      success: false,
+      message: 'No token provided.'
+    });
+  }
+
+  jwt.verify(token, process.env.JWT_TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to authenticate token.'
+      });
     }
 
-    // get token by spliting the header
-    // Format = 'Bearer tokenxyfghjhgfdfghg'
-    const token = authHeader.split(' ')[1];
-    if(!token){
-        return res.json({
-            success: false,
-            message: "Token not found!"
-        })
-    }
-
-    try {
-
-        // verify token
-        const decodeUser = jwt.verify(token, process.env.JWT_TOKEN_SECRET);
-        req.user = decodeUser;
-        next();
-        
-    } catch (error) {
-        res.json({
-            success: false,
-            message: "Invalid Token"
-        })
-    }
-
-
-}
-
-
-const authGuardAdmin = (req,res,next) => {
-
-    // get header authorization
-    const authHeader = req.headers.authorization;
-    if(!authHeader){
-        return res.json({
-            success: false,
-            message: "Authorization header not found!"
-        })
-    }
-
-    // get token by spliting the header
-    // Format = 'Bearer tokenxyfghjhgfdfghg'
-    const token = authHeader.split(' ')[1];
-    if(!token){
-        return res.json({
-            success: false,
-            message: "Token not found!"
-        })
-    }
-
-    try {
-        console.log(token);
-
-        // verify token
-        const decodeUser = jwt.verify(token, process.env.JWT_TOKEN_SECRET);
-        req.user = decodeUser;
-        if(!req.user.isAdmin){
-            return res.json({
-                success: false,
-                message: "Permission denied!"
-            })
-        }
-
-        // check if user is admin or not
-
-        next();
-        
-    } catch (error) {
-        console.log(error);
-        res.json({
-            success: false,
-            message: "Invalid Token"
-        })
-    }
-
-
-}
-
-module.exports = {
-    authGuard,
-    authGuardAdmin
+    req.userId = decoded.id;
+    next();
+  });
 };
+
+module.exports = { authGuard };

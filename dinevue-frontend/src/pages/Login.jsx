@@ -52,7 +52,11 @@ const Login = () => {
         }, 2000);
       }
     } catch (err) {
-      toast.error('Server Error');
+      if (err.response && err.response.data && err.response.data.message) {
+        toast.error(err.response.data.message);
+      } else {
+        toast.error('Server error');
+      }
       console.log(err.message);
     }
   };
@@ -61,7 +65,7 @@ const Login = () => {
     <div className="login-page" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="login-container">
         <div className="login-left">
-          <nametop className="text-5xl">Login</nametop>
+          <h1 className="text-5xl">Login</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
@@ -97,7 +101,6 @@ const Login = () => {
           </form>
           <div className="additional-links">
             <a
-              href="#"
               className="forgot-password"
               onClick={() => setShowForgotPasswordModal(true)}
             >

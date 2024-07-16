@@ -8,6 +8,7 @@ import Location from "../components/Location";
 import { FaBookmark } from "react-icons/fa";
 import RestaurantInfo from "../components/RestaurantInfo";
 import { getSingleRestaurantApi } from '../apis/Api'; // Adjust the import according to your project structure
+import NavbarIndex from "../components/navbar_index";
 
 const Restaurant_View = () => {
   const [saved, setSaved] = useState(false);
@@ -31,9 +32,12 @@ const Restaurant_View = () => {
     setSaved(!saved);
   };
 
+  const token = localStorage.getItem('token');
   return (
+      
+          
     <div className="restaurant-page">
-      <Noscrollnav />
+      {token ? <Noscrollnav /> : <NavbarIndex />}
       {restaurant ? (
         <>
           <header className="header">

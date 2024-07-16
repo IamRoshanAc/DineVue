@@ -75,11 +75,12 @@ h2.profile-text {
 }
 
 .profile-form-container {
-    width: 50%;
-    padding: 60px;
+    width: 45%;
+    padding: 30px;
     border-radius: 10px;
     background-color: #ecf0f1;
 }
+
 
 .profile-form {
     display: flex;

@@ -5,11 +5,20 @@ import Noscrollnav from '../components/noscroll';
 import { FaUserFriends, FaLightbulb, FaHandsHelping, FaStar } from 'react-icons/fa'; // Example icons
 import Logo from '../images/logo.png';
 import Aboutus from '../images/abouUs.png';
+import NavbarIndex from '../components/navbar_index';
+
+const PlaceholderComponent = () => (
+  <div className="placeholder-component">
+    <h2>Please log in to access more features</h2>
+  </div>
+);
 
 const AboutUs = () => {
+  const token = localStorage.getItem('token');
+
   return (
     <>
-      <Noscrollnav />
+      {token ? <Noscrollnav /> : <NavbarIndex />}
       <div className="aboutus-container">
         <section className="aboutus-intro">
           <div className="aboutus-text">

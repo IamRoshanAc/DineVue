@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../style/Faq.css';
 import Footer from '../components/footer';
 import Noscrollnav from '../components/noscroll';
+import NavbarIndex from '../components/navbar_index';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -42,10 +43,12 @@ const FAQ = () => {
   );
 };
 
+const token = localStorage.getItem('token');
+
 const Home = () => {
   return (
     <>
-      <Noscrollnav />
+      {token ? <Noscrollnav /> : <NavbarIndex />}
       <FAQ />
       <Footer />
     </>

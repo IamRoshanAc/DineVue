@@ -14,6 +14,8 @@ const ProfileForm = () => {
         isAdmin: false,
     });
 
+    const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
     useEffect(() => {
         const fetchUserData = async () => {
             try {
@@ -42,72 +44,90 @@ const ProfileForm = () => {
             const response = await updateUserApi(user.id, user); // Assuming updateUserApi takes userId and updated user data
             console.log('User updated:', response);
             toast.success('User updated successfully');
-            // Optionally, you can show a success message or update the UI
         } catch (error) {
             console.error('Error updating user:', error);
             toast.error('Error updating user');
-            // Handle error: show error message or log
         }
     };
 
     const handleDeleteUser = async () => {
         try {
-            const response = await deleteUserApi(user.id); // Assuming deleteUserApi takes userId
-            console.log('User deleted:', response);
+            await deleteUserApi(user.id); // Assuming deleteUserApi takes userId
+            console.log('User deleted');
             toast.success('User deleted successfully');
-            // Optionally, you can navigate to a different page or show a success message
+            localStorage.clear(); // Clear local storage if needed
+            // Optionally, navigate to login or home page
         } catch (error) {
             console.error('Error deleting user:', error);
             toast.error('Error deleting user');
-            // Handle error: show error message or log
+        } finally {
+            setShowDeleteDialog(false); // Close dialog after operation
         }
     };
 
+    const handleConfirmDelete = () => {
+        handleDeleteUser();
+    };
+
+    const handleCancelDelete = () => {
+        setShowDeleteDialog(false); // Close dialog
+    };
+
     return (
-        <form className="profile-form">
-            <div className="input-group">
-                <input
-                    type="text"
-                    defaultValue={user.firstName}
-                    placeholder="First Name"
-                    name="firstName"
-                    value={user.firstName}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type="text"
-                    placeholder="Last Name"
-                    name="lastName"
-                    value={user.lastName}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    value={user.email}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div>
-                <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    name="phone"
-                    value={user.phone}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <button type="button" className="save-changes" onClick={handleUpdateUser}>
-                Save Changes
-            </button>
-            <button type="button" className="delete-account" onClick={handleDeleteUser}>
-                Delete Account
-            </button>
+        <div className="profile-form-inside-container">
+            <form className="profile-form">
+                <div className="input-group">
+                    <input
+                        type="text"
+                        placeholder="First Name"
+                        name="firstName"
+                        value={user.firstName}
+                        onChange={handleInputChange}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Last Name"
+                        name="lastName"
+                        value={user.lastName}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        name="email"
+                        value={user.email}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div>
+                    <input
+                        type="tel"
+                        placeholder="Phone Number"
+                        name="phone"
+                        value={user.phone}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <button type="button" className="save-changes" onClick={handleUpdateUser}>
+                    Save Changes
+                </button>
+                <button type="button" className="delete-account" onClick={() => setShowDeleteDialog(true)}>
+                    Delete Account
+                </button>
+            </form>
+            {showDeleteDialog && (
+                <div className="dialog-overlay">
+                    <div className="dialog-box">
+                        <p>Are you sure you want to delete your account?</p>
+                        <button onClick={handleConfirmDelete}>Yes</button>
+                        <button onClick={handleCancelDelete}>No</button>
+                    </div>
+                </div>
+            )}
             <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-        </form>
+        </div>
     );
 };
 

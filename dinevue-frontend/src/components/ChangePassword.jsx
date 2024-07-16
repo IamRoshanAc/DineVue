@@ -36,23 +36,30 @@ const ChangePassword = () => {
             toast.error('New passwords do not match');
             return;
         }
-
+    
         try {
-            const response = await changePasswordApi({
-                currentPassword: passwords.currentPassword,
-                newPassword: passwords.newPassword,
-            });
-
-            console.log('Password changed:', response);
-            toast.success('Password changed successfully');
-
-            // Clear input fields after successful password change (optional)
-            setPasswords({
-                currentPassword: '',
-                newPassword: '',
-                confirmPassword: '',
-            });
-
+            const user = JSON.parse(localStorage.getItem('user'));
+            const id = user.id; // Retrieve user ID from local storage
+    
+            if (typeof id !== 'number') {
+                toast.error('Invalid user ID');
+                return;
+            }
+    
+            const response = await changePasswordApi(id, passwords.currentPassword, passwords.newPassword);
+    
+            if (response.data.success) {
+                toast.success(response.data.message);
+                // Clear input fields after successful password change (optional)
+                setPasswords({
+                    currentPassword: '',
+                    newPassword: '',
+                    confirmPassword: '',
+                });
+            } else {
+                toast.error(response.data.message);
+            }
+    
         } catch (error) {
             console.error('Error changing password:', error);
             toast.error('Error changing password');

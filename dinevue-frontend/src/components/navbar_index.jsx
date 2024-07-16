@@ -7,7 +7,7 @@ const NavbarIndex = () => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-      <Link to={'/index'}>
+      <Link to={'/'}>
         <img src={logo} alt="Logo" href="" className="navbar-logo" />
         </Link>
         

@@ -58,6 +58,9 @@ body {
     line-height: 1.6;
   }
   
+  .aboutus-values p{
+    margin-left: 10px;
+  }
   .mission-image {
     margin-top: 20px;
   }
@@ -104,8 +107,11 @@ body {
     flex: 1;
     display: flex;
     align-items: center; /* Vertically centers text within its container */
+    ;
   }
-  
+  .value-text h3{
+    font-weight: bold;
+  }
   .value-item .value-text {
     margin-left: 20px; /* Space between icon and text when icon is on the left */
   }

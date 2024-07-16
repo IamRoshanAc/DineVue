@@ -30,7 +30,8 @@ export const getUserById = (id) => Api.get(`/api/user/getuser/${id}`);
 export const updateUserApi = (id, data) => Api.put(`/api/user/update/${id}`, data, getAuthConfig());
 
 // Change password API
-export const changePasswordApi = (id, data) => Api.post(`/api/user/change-password/${id}`, data, getAuthConfig());
+export const changePasswordApi = (userId, currentPassword, newPassword) => 
+  Api.post('/api/user/change-password', { userId, currentPassword, newPassword }, getAuthConfig());
 
 // Delete user API
 export const deleteUserApi = (id) => Api.delete(`/api/user/delete/${id}`, getAuthConfig());

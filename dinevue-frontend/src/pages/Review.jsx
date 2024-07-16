@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "../components/footer";
@@ -8,6 +8,7 @@ import { CgProfile } from "react-icons/cg";
 import { getSingleRestaurantApi, createReviewApi } from '../apis/Api'; // Adjust the import according to your project structure
 import ProfileForm from '../components/ProfileForm';
 import '../style/Review.css';
+import Noscrollnav from '../components/noscroll';
 
 const Review = () => {
     const [activeItem, setActiveItem] = useState('Profile');
@@ -101,7 +102,7 @@ const Review = () => {
 
     return (
         <>
-            <Navbar />
+            <Noscrollnav />
             <ToastContainer />
             <div className="profile-container">
                 <div className="profile-header">
@@ -114,9 +115,9 @@ const Review = () => {
                 </div>
                 <div className="review-page">
                     <div className="review-header">
-                        <div className="back-arrow">
+                        <Link to={`/profile`} className="back-arrow">
                             <span>&larr;</span>
-                        </div>
+                        </Link>
                         <h1>Ratings & Review</h1>
                     </div>
                     <div className="review-container">
