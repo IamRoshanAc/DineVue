@@ -490,23 +490,23 @@ const addRestaurantToSaved = async (req, res) => {
   }
 };
 //
-  //   // Add restaurant ID to savedRestaurants array
-  //   user.savedRestaurants.push(restaurantId);
-  //   await user.save();
+    // Add restaurant ID to savedRestaurants array
+    user.savedRestaurants.push(restaurantId);
+    await user.save();
 
-  //   res.status(200).json({
-  //     success: true,
-  //     message: 'Restaurant added to saved restaurants.',
-  //     savedRestaurants: user.savedRestaurants,
-  //   });
-  // } catch (error) {
-  //   console.error('Add restaurant to saved error:', error);
-  //   res.status(500).json({
-  //     success: false,
-  //     message: 'Server error.',
-  //     error: error.message,
-  //   });
-  // }
+    res.status(200).json({
+      success: true,
+      message: 'Restaurant added to saved restaurants.',
+      savedRestaurants: user.savedRestaurants,
+    });
+  } catch (error) {
+    console.error('Add restaurant to saved error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error.',
+      error: error.message,
+    });
+  }
 //
 module.exports = {
   registerUser,
