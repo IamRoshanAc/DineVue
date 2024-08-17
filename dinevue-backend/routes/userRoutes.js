@@ -15,11 +15,14 @@ router.delete('/delete/:id', userController.deleteUser);
 
 // Password reset routes
 router.post('/send-code', userController.sendCodeToEmail);
-router.post("/verify-code", userController.verifyCode);
-router.post("/request-code", userController.requestCode);
-router.post("/verify-code-and-change-password", userController.verifyCodeAndChangePassword);
+router.post('/verify-code', userController.verifyCode);
+router.post('/request-code', userController.requestCode);
+router.post('/verify-code-and-change-password', userController.verifyCodeAndChangePassword);
 
 // Change password route
 router.post('/change-password', userController.changePassword);
+
+// Route to add restaurant to saved restaurants
+router.post('/add-restaurant-to-saved/:userId/:restaurantId', userController.addRestaurantToSaved);
 
 module.exports = router;

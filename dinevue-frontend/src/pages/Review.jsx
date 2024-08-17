@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams,Link } from 'react-router-dom';
+import { useParams,Link,useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "../components/footer";
@@ -11,6 +11,7 @@ import '../style/Review.css';
 import Noscrollnav from '../components/noscroll';
 
 const Review = () => {
+    const navigate = useNavigate();
     const [activeItem, setActiveItem] = useState('Profile');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -90,15 +91,10 @@ const Review = () => {
         }
     };
 
-    const renderContent = () => {
-        switch (activeItem) {
-            case 'Profile':
-                return <ProfileForm />;
-            // Add cases for other items if needed
-            default:
-                return <ProfileForm />;
-        }
-    };
+  
+    const navigateToProfile = (defaultActiveItem) => {
+        navigate('/profile', { state: { defaultActiveItem } });
+      };
 
     return (
         <>
@@ -115,9 +111,9 @@ const Review = () => {
                 </div>
                 <div className="review-page">
                     <div className="review-header">
-                        <Link to={`/profile`} className="back-arrow">
+                        <div className="back-arrow" onClick={() => navigateToProfile('Dining History')}>
                             <span>&larr;</span>
-                        </Link>
+                        </div>
                         <h1>Ratings & Review</h1>
                     </div>
                     <div className="review-container">

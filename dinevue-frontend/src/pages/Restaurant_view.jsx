@@ -14,6 +14,7 @@ const Restaurant_View = () => {
   const [saved, setSaved] = useState(false);
   const [restaurant, setRestaurant] = useState(null);
   const { id } = useParams();
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchRestaurant = async () => {
@@ -32,20 +33,19 @@ const Restaurant_View = () => {
     setSaved(!saved);
   };
 
-  const token = localStorage.getItem('token');
   return (
-      
-          
     <div className="restaurant-page">
       {token ? <Noscrollnav /> : <NavbarIndex />}
       {restaurant ? (
         <>
           <header className="header">
             <img src={restaurant.coverphoto} alt="Restaurant" className="header-image" />
-            <button className="save-button" onClick={handleSaveClick}>
-              <FaBookmark className={`save-icon ${saved ? 'saved' : ''}`} />
-              {saved ? 'Restaurant Saved' : 'Save this restaurant'}
-            </button>
+            {token && (
+              <button className="save-button" onClick={handleSaveClick}>
+                <FaBookmark className={`save-icon ${saved ? 'saved' : ''}`} />
+                {saved ? 'Restaurant Saved' : 'Save this restaurant'}
+              </button>
+            )}
           </header>
           <div className="main-content">
             <RestaurantInfo restaurant={restaurant} />

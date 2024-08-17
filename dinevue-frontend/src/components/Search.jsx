@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 import '../style/Search.css';
 import { FaSearch } from 'react-icons/fa';
 
 const SearchBar = () => {
-  const [searchTerm, setSearchTerm] = useState(''); // State to store the search term
-  const navigate = useNavigate(); // Hook to get the navigate function
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   const handleSearch = () => {
-    if (searchTerm.trim() !== '') {
-      navigate(`/search?query=${encodeURIComponent(searchTerm)}`); // Redirect with search query
-    }
+    navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
   };
 
   return (
@@ -24,7 +22,7 @@ const SearchBar = () => {
             className="searchbar-input" 
             placeholder="Search Restaurant" 
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Update state on input change
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         <button className="search-button" onClick={handleSearch}>Search</button>

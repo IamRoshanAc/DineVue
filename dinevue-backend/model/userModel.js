@@ -1,6 +1,7 @@
 // models/userModel.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/db');
+const { Restaurant } = require('./restaurantModel'); // Import the Restaurant model
 
 const User = sequelize.define('User', {
   id: {
@@ -38,14 +39,37 @@ const User = sequelize.define('User', {
   },
   resetCode: {
     type: DataTypes.STRING,
-    allowNull: true, // Allows null if no reset code is set
+    allowNull: true,
   },
   resetCodeExpiration: {
     type: DataTypes.DATE,
-    allowNull: true, // Allows null if no reset code expiration is set
-  }
+    allowNull: true,
+  },
+  savedRestaurants: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER), // Array of integers (restaurant IDs)
+    defaultValue: [],
+  },
+  loginAttempts: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
+  lockUntil: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  passwordLastUpdated: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  passwordExpiresAt: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
 }, {
   tableName: 'users',
 });
+
+// Define association to Restaurant model
+User.belongsToMany(Restaurant, { through: 'UserSavedRestaurants' });
 
 module.exports = User;

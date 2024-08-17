@@ -28,6 +28,10 @@ const Noscrollnav = () => {
     setShowTooltip(!showTooltip);
   };
 
+  const navigateToProfile = (defaultActiveItem) => {
+    navigate('/profile', { state: { defaultActiveItem } });
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -54,7 +58,10 @@ const Noscrollnav = () => {
           >
           </button>
           <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-            <li><a className="dropdown-item" href="/Profile">Profile</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => navigateToProfile('Profile')}>Profile</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => navigateToProfile('Change Password')}>Change Password</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => navigateToProfile('Dining History')}>Dining History</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => navigateToProfile('Reservations')}>Reservations</a></li>
             <li>
               <button 
                 onClick={handleLogoutClick}

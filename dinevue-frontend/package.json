@@ -43,7 +43,8 @@
     "react-toastify": "^10.0.5",
     "sass": "^1.77.8",
     "styled-components": "^6.1.11",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",

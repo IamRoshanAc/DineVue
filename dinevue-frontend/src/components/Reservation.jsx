@@ -178,7 +178,7 @@ const Reservation = ({ restaurant }) => {
       >
         <div className="modal-content">
           <h2>One step away from reserving your table!</h2>
-          <div className="modal-header">
+          <div className="modall-header">
             <img src={restaurant.coverphoto} alt="Restaurant" className="restaurant-image" />
             <div className="restaurant-details">
               <h3>{restaurant.restaurantName}</h3>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../style/Tooltip.css';
 import { getReservationByUserId, getAllRestaurantApi } from '../apis/Api'; // Adjust the import path as needed
-
+import { useNavigate } from 'react-router-dom';
 const Tooltip = ({ show }) => {
   const [reservation, setReservation] = useState(null);
   const [restaurantDetails, setRestaurantDetails] = useState({});
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchReservationsAndRestaurantDetails = async () => {
       try {
@@ -52,6 +52,9 @@ const Tooltip = ({ show }) => {
 
   const restaurant = restaurantDetails[reservation.restaurantId] || {};
 
+  const navigateToProfile = (defaultActiveItem) => {
+    navigate('/profile', { state: { defaultActiveItem } });
+  };
   return (
     <div className="nav-tooltip">
       <h2 className="nav-modal-title">Upcoming Reservations</h2>
@@ -69,7 +72,7 @@ const Tooltip = ({ show }) => {
           </div>
         </div>
       </div>
-      <a href="/profile" className="nav-view-all">View All Reservations</a>
+      <a onClick={() => navigateToProfile('Reservations')} className="nav-view-all">View All Reservations</a>
     </div>
   );
 };

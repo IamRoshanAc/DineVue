@@ -33,6 +33,15 @@ export const updateUserApi = (id, data) => Api.put(`/api/user/update/${id}`, dat
 export const changePasswordApi = (userId, currentPassword, newPassword) => 
   Api.post('/api/user/change-password', { userId, currentPassword, newPassword }, getAuthConfig());
 
+export const addRestaurantToSavedApi = async (userId, restaurantId) => {
+  try {
+    const response = await Api.post('/api/user/add-restaurant-to-saved', { userId, restaurantId }, getAuthConfig());
+    return response.data; // Adjust as per your API response structure
+  } catch (error) {
+    throw error; // Re-throwing the error for centralized error handling
+  }
+};
+
 // Delete user API
 export const deleteUserApi = (id) => Api.delete(`/api/user/delete/${id}`, getAuthConfig());
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import ProfileForm from "../components/ProfileForm";
@@ -10,7 +11,9 @@ import Noscrollnav from '../components/noscroll';
 import ChangePassword from '../components/ChangePassword';
 
 const Profile = () => {
-    const [activeItem, setActiveItem] = useState('Profile');
+    const location = useLocation();
+    const defaultActiveItem = location.state?.defaultActiveItem || 'Profile';
+    const [activeItem, setActiveItem] = useState(defaultActiveItem);
     const [firstName, setFirstName] = useState('');
 
     useEffect(() => {

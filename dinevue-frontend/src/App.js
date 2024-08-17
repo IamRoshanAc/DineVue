@@ -9,7 +9,7 @@ import {
 // for showing toast messages
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-//import RegistrationPage from './pages/register';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
@@ -32,7 +32,7 @@ import AdminLog from './pages/admin/admin_login';
 function App() {
   return (
     <Router>
-      {/* <ToastContainer> */}
+      <ToastContainer />
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

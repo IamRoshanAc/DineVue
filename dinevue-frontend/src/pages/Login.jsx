@@ -5,8 +5,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../style/Login.css';
-import backgroundImage from '../images/Untitled design (4).png';
-import logoImage from '../images/logo.png';
+import Logo from '../images/DineDesk (2).png';
 import { loginUserApi } from '../apis/Api';
 import ForgetPasswordModal from '../components/codeModal';
 
@@ -62,10 +61,13 @@ const Login = () => {
   };
 
   return (
-    <div className="login-page" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="login-page" >
       <div className="login-container">
         <div className="login-left">
+          <img src={Logo} className='logo'/>
+          <br/>
           <h1 className="text-5xl">Login</h1>
+          <br/>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
@@ -107,9 +109,6 @@ const Login = () => {
               Forgot Password?
             </a>
           </div>
-        </div>
-        <div className="login-right">
-          <img src={logoImage} alt="DineVue Logo" />
         </div>
       </div>
       <ToastContainer />

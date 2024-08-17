@@ -17,6 +17,8 @@ const SearchView = () => {
     const [selectedCuisines, setSelectedCuisines] = useState([]);
     const [sortOption, setSortOption] = useState('Top Rated');
     const [cuisines, setCuisines] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const restaurantsPerPage = 4;
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -103,6 +105,17 @@ const SearchView = () => {
         return 0;
     });
 
+    // Pagination logic
+    const indexOfLastRestaurant = currentPage * restaurantsPerPage;
+    const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
+    const currentRestaurants = sortedRestaurants.slice(indexOfFirstRestaurant, indexOfLastRestaurant);
+
+    const totalPages = Math.ceil(sortedRestaurants.length / restaurantsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     // Function to render star ratings
     const renderRatingStars = (rating) => {
         const filledStars = Math.round(rating); // Round to nearest whole star
@@ -121,6 +134,7 @@ const SearchView = () => {
 
         return stars;
     };
+
     const token = localStorage.getItem('token');
     return (
         <>
@@ -160,29 +174,48 @@ const SearchView = () => {
                     </div>
                 </div>
                 <div className="search-restaurant-list">
-                    {sortedRestaurants.map((restaurant) => (
-                        <div key={restaurant.id} className="search-restaurant-card">
-                            <Link to={`/restaurant_view/${restaurant.id}`}>
-                                <img
-                                    src={restaurant.coverphoto}
-                                    alt={restaurant.restaurantName}
-                                    className="search-card-img-top"
-                                />
-                            </Link>
-                            <div className="search-card-body">
-                                <h5 className="search-card-title">{restaurant.restaurantName}</h5>
-                                <div className="rating-slider">{renderRatingStars(restaurant.rating)}</div>
-                                <p className="search-card-text">{restaurant.address}</p>
-                                <div className="tags">
-                                    {restaurant.seatingDetails?.map((seating, index) => (
-                                        <span key={index} className="view_tag">{seating.type}</span>
-                                    ))}
+                    {currentRestaurants.length > 0 ? (
+                        currentRestaurants.map((restaurant) => (
+                            <div key={restaurant.id} className="search-restaurant-card">
+                                <Link to={`/restaurant_view/${restaurant.id}`}>
+                                    <img
+                                        src={restaurant.coverphoto}
+                                        alt={restaurant.restaurantName}
+                                        className="search-card-img-top"
+                                    />
+                                </Link>
+                                <div className="search-card-body">
+                                    <h5 className="search-card-title">{restaurant.restaurantName}</h5>
+                                    <div className="rating-slider">{renderRatingStars(restaurant.rating)}</div>
+                                    <p className="search-card-text">{restaurant.address}</p>
+                                    <div className="tags">
+                                        {restaurant.seatingDetails?.map((seating, index) => (
+                                            <span key={index} className="view_tag">{seating.type}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    ) : (
+                        <div className="no-restaurants">No restaurants found</div>
+                    )}
                 </div>
             </div>
+            {currentRestaurants.length > 0 && (
+                <div className="pagination">
+                    <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                        &#8592;
+                    </button>
+                    {[...Array(totalPages).keys()].map(number => (
+                        <button key={number + 1} onClick={() => handlePageChange(number + 1)} className={currentPage === number + 1 ? 'active' : ''}>
+                            {number + 1}
+                        </button>
+                    ))}
+                    <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                        &#8594;
+                    </button>
+                </div>
+            )}
             <Footer />
             <ToastContainer />
         </>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getUserById, updateUserApi, deleteUserApi } from '../apis/Api'; // Import API functions
 import '../style/Profile.css';
+import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileForm = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         id: null,
         firstName: '',
@@ -56,7 +58,7 @@ const ProfileForm = () => {
             console.log('User deleted');
             toast.success('User deleted successfully');
             localStorage.clear(); // Clear local storage if needed
-            // Optionally, navigate to login or home page
+            navigate('/login');// Optionally, navigate to login or home page
         } catch (error) {
             console.error('Error deleting user:', error);
             toast.error('Error deleting user');

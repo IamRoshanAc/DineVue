@@ -158,6 +158,7 @@ html, body {
     display: block;
     color: #2c2f48;
     font-weight: normal;
+    cursor: pointer;
 }
   
 .form-group input[type="file"] {

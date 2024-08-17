@@ -14,6 +14,9 @@ html, body {
   height: 100vh; /* Ensure full viewport height */
   width: 100vw; /* Ensure full viewport width */
   background-color: #2D3452; /* Background color */
+  background-image: url('../images/aa.png'); /* Background image */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the background image */
   overflow: hidden; /* Prevent scrolling */
 }
 
@@ -46,6 +49,14 @@ html, body {
   margin-bottom: 20px;
   color: #000;
 }
+.register-left .logo{
+    align-self: center;
+    margin-top: -40px;
+    margin-left: -10px;
+    height: auto;
+    width: 150px;
+  }
+
 
 .register-page .form-row {
   display: flex;
@@ -129,12 +140,6 @@ html, body {
   font-weight: normal;
 }
 
-.register-right {
-  padding-left: 150px;
-  height: 100%; /* Full height of the viewport */
-  width: 100%; /* Full width of the viewport */
-}
-
 @media (max-width: 768px) {
   .register-page .register-left {
     padding: 20px;
@@ -178,3 +183,18 @@ html, body {
     padding-right: 5px;
   }
 }
+.password-strength-bar {
+  height: 8px;
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin-top: 5px;
+  display: block; /* Ensures visibility when rendered */
+}
+
+.strength-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease-in-out;
+}
+

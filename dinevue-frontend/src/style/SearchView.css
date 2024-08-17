@@ -172,3 +172,31 @@ html, body {
     font-size: 0.875rem;
     color: #555;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination button {
+    background-color: #2e3a56; /* Dark blue color */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.pagination button.active {
+    background-color: #f5f5f5; /* Light grey color */
+    color: #2e3a56; /* Dark blue color */
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

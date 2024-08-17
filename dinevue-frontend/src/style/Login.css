@@ -14,6 +14,9 @@ html, body {
   height: 100vh; /* Ensure full viewport height */
   width: 100vw; /* Ensure full viewport width */
   background-color: #2D3452; /* Background color */
+  background-image: url('../images/download.png'); /* Background image */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the background image */
   overflow: hidden; /* Prevent scrolling */
 }
 
@@ -49,6 +52,13 @@ html, body {
   color: #000;
 }
 
+.login-left .logo{
+  align-self: center;
+  margin-top: -60px;
+  margin-left: -10px;
+  height: auto;
+  width: 150px;
+}
 .login-page .form-group {
   margin-bottom: 15px;
   width: 100%;
@@ -172,4 +182,3 @@ html, body {
     padding-right: 5px;
   }
 }
-
