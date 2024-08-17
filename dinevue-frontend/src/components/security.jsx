@@ -15,7 +15,11 @@ const Security = () => {
     <div className="search-bar-container">
       <h1 className="title">Let's find your ideal table</h1>
       <div className="search-row">
-        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <button className="search-button" onClick={handleSearch}>Search</button>
       </div>
     </div>
