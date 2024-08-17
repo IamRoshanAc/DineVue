@@ -21,6 +21,14 @@ const syncModels = async () => {
   }
 };
 
+// Sync models and associations
+sequelize.sync({ force: false })
+  .then(() => console.log('Database synced'))
+  .catch(error => console.error('Error syncing database:', error));
+
 syncModels();
 
 module.exports = sequelize;
+
+
+

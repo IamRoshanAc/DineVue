@@ -27,10 +27,13 @@ const NavbarAdmin = () => {
           <img src={logo} alt="Logo" className="navbar-logo" />
         </Link>
       </div>
+      <Link to="/audits" className="login-button">Audit Logs</Link>
       <div className="navbar-right">
         <div className="button-container">
           <button className="logout-button" onClick={handleLogoutClick}>Log Out</button>
         </div>
+        
+        
       </div>
       {showDialog && (
         <div className="dialog-overlay">

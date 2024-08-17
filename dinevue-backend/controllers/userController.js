@@ -66,7 +66,7 @@ const loginUser = async (req, res) => {
     const token = jwt.sign(
       { id: user.id, email: user.email, phone: user.phone },
       process.env.JWT_TOKEN_SECRET,
-      { expiresIn: '1h' }
+      { expiresIn: '15d' } // Token expires in 15 days
     );
 
     const userDetails = {
@@ -94,6 +94,7 @@ const loginUser = async (req, res) => {
     });
   }
 };
+
 
 
 const handleFailedLoginAttempt = async (user) => {

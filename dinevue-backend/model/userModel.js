@@ -48,23 +48,7 @@ const User = sequelize.define('User', {
   savedRestaurants: {
     type: DataTypes.ARRAY(DataTypes.INTEGER), // Array of integers (restaurant IDs)
     defaultValue: [],
-  },
-  loginAttempts: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0,
-  },
-  lockUntil: {
-    type: DataTypes.DATE,
-    allowNull: true,
-  },
-  passwordLastUpdated: {
-    type: DataTypes.DATE,
-    allowNull: true,
-  },
-  passwordExpiresAt: {
-    type: DataTypes.DATE,
-    allowNull: true,
-  },
+  }
 }, {
   tableName: 'users',
 });

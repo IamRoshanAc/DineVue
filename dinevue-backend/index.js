@@ -39,6 +39,7 @@ app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/restaurant', require('./routes/restaurantRoutes'));
 app.use('/api/reservations', require('./routes/reservationRoutes'));
 app.use('/api/reviews', require('./routes/reviewsRoutes'));
+app.use('/api/audit-logs', require('./routes/auditRoutes'));
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

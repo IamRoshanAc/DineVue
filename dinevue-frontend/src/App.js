@@ -27,6 +27,7 @@ import DetailsUpdate from './components/restaurant/DetailsUpdate';
 import AboutUs from './pages/AboutUs';
 import SearchView from './pages/SearchView';
 import AdminLog from './pages/admin/admin_login';
+import Audits from './pages/admin/audits';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         {/* admin */}
         <Route path='/admin_log' element={<AdminLog/>} />
         <Route path='/admin_dashboard' element={<AdminDashboard/>} />
+        <Route path='/audits' element={<Audits/>} />
 
         {/* <Route element={<UserRoutes/>}>
         <Route path='/profile' element={<Profile/>} />
