@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../style/Search.css';
 import { FaSearch } from 'react-icons/fa';
 
-const SearchBar = () => {
+const Security = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
@@ -31,4 +31,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default Security;
